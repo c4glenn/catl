@@ -9,11 +9,10 @@
 from antlr4 import InputStream, CommonTokenStream
 
 from catl import Operation as CATLOperation
-from catl import CATLFormula
-from catl import CATLAbstractSyntaxTreeExtractor
+from catl import CATLFormula, CATLAbstractSyntaxTreeExtractor
 
-from catlLexer import catlLexer
-from catlParser import catlParser
+from catl.catlLexer import catlLexer
+from catl.catlParser import catlParser
 
 from stl import Operation as STLOperation
 from stl import RelOperation as STLRelOperation
