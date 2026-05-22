@@ -119,6 +119,17 @@ class CATLFormula(object):
             return self.left.capabilities() | self.right.capabilities()
         elif self.op in (Operation.NOT, Operation.ALWAYS, Operation.EVENT):
             return self.child.capabilities()
+    
+    def cap_prop(self):
+        if self.op in (Operation.PRED, Operation.LIMIT):
+            return {(self.proposition, frozenset({cr.capability for cr in self.capability_requests}))}
+        elif self.op in (Operation.AND, Operation.OR):
+            return set.union(*[child.cap_prop() for child in self.children])
+        elif self.op in (Operation.IMPLIES, Operation.UNTIL):
+            return self.left.cap_prop() | self.right.cap_prop()
+        elif self.op in (Operation.NOT, Operation.ALWAYS, Operation.EVENT):
+            return self.child.cap_prop()
+
 
     def resources(self):
         '''Computes the set of resources involved in the CATL formula.'''
