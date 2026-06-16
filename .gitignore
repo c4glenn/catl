@@ -109,12 +109,6 @@ venv.bak/
 .settings
 
 # ANTLR generated files
-*.tokens
-*.interp
-*Lexer.py
-*Parser.py
-*Visitor.py
-*Listener.py
 
 .vscode/
 science2020.py
